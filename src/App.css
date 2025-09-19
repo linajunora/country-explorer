@@ -1,0 +1,302 @@
+:root {
+  --color-bg-500: rgb(38, 41, 57);
+  --color-bg-400: rgb(48, 51, 68);
+  --color-bg-300: rgb(60, 64, 83);
+  --color-bg-200: rgb(69, 75, 105);
+  --color-bg-100: rgb(121, 131, 183);
+  --color-bg-perigray: rgb(100, 107, 141);
+
+  --text-comment: rgb(109, 115, 151);
+  --text-yellow: rgb(247, 205, 122);
+  --text-magenta: rgb(191, 148, 228);
+  --text-darker-magenta: rgb(161, 103, 211);
+  --text-periwinkle: rgb(133, 163, 240);
+  --text-darker-periwinkle:rgb(100, 130, 215);
+  --text-lightblue: rgb(154, 216, 248);
+  --text-darker-red: rgb(149, 52, 65);
+  --text-red: rgb(236, 98, 117);
+  --text-lighter-red: rgb(223, 131, 177);
+
+  --font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: "Cascadia Code", "Fira Code", Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+#root {
+  width: 100vw;
+  min-height: 100dvh;             
+  display: flex;                 
+  flex-direction: column;
+
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-mono);
+  background: var(--color-bg-500);
+  width: 100%;
+}
+
+h1, h2, h3, p {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* * {
+  outline: 1px solid red;
+} */
+
+.app-shell {
+  max-width: 430px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  box-sizing: border-box;
+  flex: 1;
+}
+
+.app-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-nav {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  margin: 30px 0;
+  box-sizing: border-box;
+}
+
+.app-title {
+  margin-top: 20px;
+  color: var(--text-periwinkle);
+  text-transform: uppercase;
+  margin-bottom: 0px;
+  text-align: center;
+  width: 100%;
+}
+
+.app-main {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-pixel {
+  width: 300px;
+}
+
+/*funny code comment*/
+.code-block {
+  width: 100%;
+  background: var(--color-bg-400);
+  border: 1px solid var(--text-yellow);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  margin: 0.5rem 0 1.25rem 0;
+  font-family: var(--font-mono, "Fira Code", monospace);
+  font-size: 0.85rem;
+  overflow-x: auto;
+  color: var(--text-lightblue);
+  white-space: pre-wrap;
+  box-sizing: border-box;
+}
+
+.code-block .comment {
+  color: var(--text-red); 
+}
+
+.code-block .string {
+  color: var(--text-magenta); /* reddish orange */
+}
+
+.code-block .keyword {
+  color: var(--color-keyword, #569cd6); /* blue keywords */
+}
+
+/*hr fade cool styling*/
+.hr-fade {
+  border: none;
+  height: 1px;
+  margin: 1rem 0;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--text-yellow),   /* purple in the middle */
+    transparent
+  );
+  border-radius: 2px;
+  align-self: stretch;
+}
+
+.hr-fade:last-of-type {
+  margin-bottom: 40px;
+}
+
+.btn {
+  padding: 5px 10px;
+  background-color: var(--color-bg-300);
+  border: 0.5px solid var(--text-magenta);
+  color: var(--text-lightblue);
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.btn:hover {
+  background-color: var(--text-magenta);
+  color: var(--text-comment);
+}
+
+.button-nav {
+  width: 250px;
+  height: 20px;
+  padding: 10px;
+  border-radius: 17px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(
+    90deg,
+    var(--text-periwinkle),
+    var(--text-magenta)
+  );
+
+  color: var(--color-bg-400); /* dark text for contrast */
+  font-weight: bold;
+  border: none;               /* clean gradient look */
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.button-nav:hover {
+  background: var(--text-red);
+  color: var(--color-bg-500);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+/* 
+.button-quiz {
+  background: var(--text-darker-periwinkle);
+  border: 1px solid var(--text-yellow);
+  /* background: linear-gradient(
+    90deg,
+    var(--text-darker-periwinkle),
+    var(--text-darker-magenta)
+  );
+*/
+
+.app-nav.nav-inner {
+  flex-direction: row;
+  justify-content: center;
+  gap: 5px;
+  padding: 0;
+  margin: 0;
+}
+
+.app-nav.nav-inner .btn {
+  width: 85px;
+  padding: 4px 0;
+  font-size: 0.75rem;
+}
+
+/*footer*/
+
+.app-footer {
+  width: 100%;
+  margin-top: auto;
+  padding: 1rem;
+  text-align: center;
+  border-top: 1px solid var(--color-bg-300);
+  font-size: 0.75rem;
+}
+
+.keyword {
+  color: var(--text-red);
+}
+.string {
+  color: var(--text-magenta);
+}
+.comment {
+  color: var(--text-periwinkle);
+}
+
+/*STUDY COUNTRIES*/
+
+.countries-grid {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 40px;
+}
+
+.country-card {
+  background:
+    linear-gradient(var(--color-bg-300), var(--color-bg-400)) padding-box,
+    linear-gradient(135deg,
+      var(--text-periwinkle),
+      var(--text-magenta),
+      var(--text-lightblue)
+    ) border-box;
+
+  border: 1px solid transparent;     /* let gradient show through */
+  border-radius: 12px;
+
+  /* your existing styles */
+  width: 180px;
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  box-sizing: border-box;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  transition: transform .2s, box-shadow .2s;
+  cursor: pointer;
+}
+
+.country-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+}
+
+.country-card p {
+  font-weight: 300;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+  color: var(--color-bg-100);
+  font-family: var(--font-ui);
+  background-color: var(--color-bg-500);
+  width: 100%;
+  padding: 4px 0px;
+  box-sizing: border-box;
+  text-align: center;
+  border-radius: 6px;
+  border: 1px solid var(--color-bg-200);
+  margin-top: 10px;
+}
+
+.country-img {
+  width: 150px;
+  height: auto;
+  border-radius: 4px;
+}
+
