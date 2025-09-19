@@ -37,7 +37,10 @@ export default function Countries() {
         {selectedRegion && error && <p style={{ color: 'red'}}>Error: {error}</p>}
         {selectedRegion && list && (
           <div className="countries-grid">
-            {list.map((country) => (
+            {list
+              .slice()//shallow copy so i dont mutate state
+              .sort((a, b) => a.name.common.localeCompare(b.name.common))
+              .map((country) => (
               <div key={country.cca3} className="country-card">
                 <img src={country.flags.png} className="country-img" alt={country.name.common} />
                 <p>{country.name.common}</p>
