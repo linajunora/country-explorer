@@ -22,7 +22,7 @@ function App() {
       <Route element={<Layout />}>
         <Route path='/' element={<Home />}></Route>
         <Route path='/countries' element={<Countries />}></Route>
-        <Route path='/countries/:countryName' element={<CountryDetails />}></Route>
+        <Route path='/countries/:countryCode' element={<CountryDetails />}></Route>
         <Route path='/collection' element={<Collection />}></Route>
         <Route path='/quiz' element={<Quiz />}></Route>
         <Route path='/leaderboard' element={<Leaderboard />}></Route>

@@ -1,5 +1,6 @@
 import { useApp } from "../context/AppContext.jsx";
 import useFetchCountries from "../features/countries/hooks/useFetchCountries.js";
+import { Link } from 'react-router-dom';
 
 export default function Countries() {
   const { state, dispatch } = useApp();
@@ -42,13 +43,14 @@ export default function Countries() {
               .sort((a, b) => a.name.common.localeCompare(b.name.common))
               .map((country) => (
               <div key={country.cca3} className="country-card">
-                <img src={country.flags.png} className="country-img" alt={country.name.common} />
+                <Link to={`/countries/${country.cca3}`}>
+                  <img src={country.flags.png} className="country-img" alt={country.name.common} />
+                </Link>
                 <p>{country.name.common}</p>
               </div>
             ))} 
           </div>
         )}
-
         {/*Later: render your flagGrid here using `list`*/}
       </div>
     );

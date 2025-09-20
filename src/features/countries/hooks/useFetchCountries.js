@@ -62,10 +62,14 @@ export default function useFetchCountries() {
             //payload has the region and the array of countries
             //your reducer stores that under countriesByRegion[region], so its cached for next time
             .then((data) => {
+                
+                const filtered = data.filter(
+                    (country) => country.name.common.toLowerCase() !== 'israel'
+                );
                 //store data
                 dispatch({
                     type: 'SET_COUNTRIES',
-                    payload: { region: selectedRegion, countries: data },
+                    payload: { region: selectedRegion, countries: filtered },
                 });
             })
             //only show error if it WASNT caused by an abort (user navigate too quickly)
