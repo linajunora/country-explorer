@@ -1,11 +1,13 @@
 import { useParams } from 'react-router-dom';
 import { useApp } from '../context/AppContext.jsx';
+import { useEffect, useMemo, useState } from 'react';
 
 
 export default function CountryDetails() {
   //useParams is a react HOOK, looks at the current URL and gives an 
   //object with all the:params you defined in your routes
   const { countryCode } = useParams();
+  // console.log("countryCode from URL:", countryCode);
   //useApp is my own custom HOOK.
   const { state, addToCollection, removeFromCollection } = useApp();  
   
@@ -15,8 +17,13 @@ export default function CountryDetails() {
   // 3 - .flat() method takes an array of arrays and crushes them into one big array.
   //summary: “Take all the regions we’ve fetched, ignore the keys (Europe, Asia, …), just grab the arrays of countries, and merge them into one big array called allCountries.”
   const allCountries = Object.values(state.countriesByRegion).flat();
-  const country = allCountries.find(c => c.cca3 === countryCode);
+  let country = allCountries.find(c => c.cca3 === countryCode);
 
+  //fallback: look in saved collection
+  if (!country) {
+    country = state.collection[countryCode];
+  }
+  
   if (!country) return <p>Country not found</p>;
 
   const isSaved = !!state.collection[country.cca3];
@@ -35,14 +42,14 @@ export default function CountryDetails() {
       <div className='country-div'>
         <img src={country.flags.png} alt={country.name.common}></img>
         <h2>{country.name.common}</h2>
-        <p>Population: {country.population.toLocaleString()}</p>
+        <p><strong>Population:</strong> {country.population.toLocaleString()}</p>
         <p>
           {/* - if currencies is missing, use {} as a falllback
               - Object.values turns the object into an array of its values (multiple objects, swe kr, euro € -> one array)
               - .map(cur => cur.name) extract just the names ['Swedish krona', 'Euro']
               - .join(',') join into one string: 'Swedish krona', 'Euro'
               SUMMARY: So your <p>Currency: ...</p> renders a clean, comma-separated list.*/}
-          Currency: {Object.values(country.currencies || {} )
+          <strong>Currency:</strong> {Object.values(country.currencies || {} )
           .map(cur => cur.name)
           .join(', ')
           }
@@ -50,9 +57,9 @@ export default function CountryDetails() {
         <a href={country.maps.googleMaps} target='_blank'>View on Google Maps</a>
           {/*SAVE BUTTON GOES HERE*/}
           {isSaved ? (
-            <button onClick={handleRemove}>Remove from collection</button>
+            <button onClick={handleRemove} className='btn'>Remove</button>
           ) : (
-            <button onClick={handleSave}>Save to collection</button>
+            <button onClick={handleSave} className='btn'>Save</button>
           )}
       </div>
     );

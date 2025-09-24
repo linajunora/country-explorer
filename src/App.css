@@ -1,10 +1,14 @@
 :root {
+  --color-bg-600: rgb(28, 30, 42);
   --color-bg-500: rgb(38, 41, 57);
   --color-bg-400: rgb(48, 51, 68);
   --color-bg-300: rgb(60, 64, 83);
   --color-bg-200: rgb(69, 75, 105);
   --color-bg-100: rgb(121, 131, 183);
   --color-bg-perigray: rgb(100, 107, 141);
+
+  --color-muted-purple: rgb(64,74,113);
+  --color-muted-purple-two: rgb(95, 108, 161);
 
   --text-comment: rgb(109, 115, 151);
   --text-yellow: rgb(247, 205, 122);
@@ -43,13 +47,21 @@ h1, h2, h3, p {
 a {
   text-decoration: none;
 }
-
-/* * {
-  outline: 1px solid red;
-} */
+p {
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--text-periwinkle);
+  font-family: var(--font-ui);
+}
+li {
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--text-periwinkle);
+  font-family: var(--font-ui);
+}
 
 .app-shell {
-  max-width: 430px;
+  max-width: 500px;
   width: 100%;
   margin: 0 auto;
   display: flex;
@@ -58,9 +70,11 @@ a {
   align-items: center;
   box-sizing: border-box;
   flex: 1;
+  padding: 20px;
 }
 
 .app-header {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -86,11 +100,19 @@ a {
   width: 100%;
 }
 
+.slogan-p {
+  margin-top: 10px;
+  font-family: var(--font-mono, "Fira Code", monospace);
+  font-size: 0.7rem;
+  color: var(--text-magenta);
+}
+
 .app-main {
   flex: 1;
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .hero-pixel {
@@ -118,11 +140,11 @@ a {
 }
 
 .code-block .string {
-  color: var(--text-magenta); /* reddish orange */
+  color: var(--text-magenta); 
 }
 
 .code-block .keyword {
-  color: var(--color-keyword, #569cd6); /* blue keywords */
+  color: var(--color-keyword, #569cd6); 
 }
 
 /*hr fade cool styling*/
@@ -133,7 +155,7 @@ a {
   background: linear-gradient(
     to right,
     transparent,
-    var(--text-yellow),   /* purple in the middle */
+    var(--text-yellow),  
     transparent
   );
   border-radius: 2px;
@@ -144,20 +166,55 @@ a {
   margin-bottom: 40px;
 }
 
+/*Hr normal*/
+.hr-normal {
+  border: none;
+  height: 1px;
+  margin: 1rem 0;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--text-magenta),  
+    transparent
+  );
+  border-radius: 2px;
+  align-self: stretch;
+}
+
+.hr-normal:last-of-type {
+  margin-bottom: 40px;
+}
+
 .btn {
-  padding: 5px 10px;
-  background-color: var(--color-bg-300);
-  border: 0.5px solid var(--text-magenta);
-  color: var(--text-lightblue);
-  font-size: 1rem;
-  border-radius: 5px;
+  width: 90px;
+  height: 15px;
+  padding: 14px 12px;
+  display: inline-flex;
+  justify-content: center;
+  border-radius: 23px;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  white-space: nowrap;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 500;
+
+  background-color: var(--color-bg-500);
+
+
+  color: var(--text-periwinkle); 
+  border: 1px solid var(--text-darker-periwinkle);         
   cursor: pointer;
-  transition: background 0.2s ease-in-out;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .btn:hover {
-  background-color: var(--text-magenta);
-  color: var(--text-comment);
+  color: var(--color-bg-500);
+  background: rgba(133, 163, 240, 0.8);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
 }
 
 .button-nav {
@@ -175,9 +232,9 @@ a {
     var(--text-magenta)
   );
 
-  color: var(--color-bg-400); /* dark text for contrast */
+  color: var(--color-bg-400); 
   font-weight: bold;
-  border: none;               /* clean gradient look */
+  border: none;    
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -188,29 +245,79 @@ a {
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(0,0,0,0.25);
 }
-/* 
-.button-quiz {
-  background: var(--text-darker-periwinkle);
-  border: 1px solid var(--text-yellow);
-  /* background: linear-gradient(
-    90deg,
-    var(--text-darker-periwinkle),
-    var(--text-darker-magenta)
-  );
-*/
 
-.app-nav.nav-inner {
+/*OTHER PAGES NOT HOME*/
+
+.nav-inner {
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-evenly;
   gap: 5px;
   padding: 0;
   margin: 0;
 }
 
-.app-nav.nav-inner .btn {
-  width: 85px;
-  padding: 4px 0;
-  font-size: 0.75rem;
+.button-nav-other {
+  width: 90px;
+  height: 15px;
+  padding: 10px 12px;
+  display: inline-flex;
+  justify-content: center;
+  border-radius: 23px;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  white-space: nowrap;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 500;
+
+  background-color: var(--color-bg-500);
+  
+
+  color: var(--text-lightblue); 
+  border: 1px solid var(--text-magenta);            
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.button-nav-other:hover {
+  color: var(--color-bg-500);
+  background: rgba(133, 163, 240, 0.8);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+.app-title-other {
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+
+h2 {
+  margin-top: 20px;
+  color: var(--text-periwinkle);
+  text-transform: uppercase;
+  text-align: center;
+  width: 100%;
+}
+
+/*COUNTRIES / STUDY */
+.other-shell {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.regions-btn-div {
+  width: 400px;
+  gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 /*footer*/
@@ -235,6 +342,16 @@ a {
 }
 
 /*STUDY COUNTRIES*/
+.other-shell p {
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--text-periwinkle);
+  font-family: var(--font-ui);
+  width: 100%;
+  padding: 4px 0px;
+  box-sizing: border-box;
+  text-align: center;
+}
 
 .countries-grid {
   width: 100%;
@@ -247,7 +364,7 @@ a {
 }
 
 .country-card {
-  background:
+  /* background:
     linear-gradient(var(--color-bg-300), var(--color-bg-400)) padding-box,
     linear-gradient(135deg,
       var(--text-periwinkle),
@@ -255,20 +372,20 @@ a {
       var(--text-lightblue)
     ) border-box;
 
-  border: 1px solid transparent;     /* let gradient show through */
+  border: 1px solid transparent;  */
+  background-color: var(--color-bg-400);
   border-radius: 12px;
 
-  /* your existing styles */
-  width: 180px;
+  width: 200px;
   min-height: 160px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 12px;
+  padding: 20px;
   box-sizing: border-box;
   text-align: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  /* box-shadow: 0 2px 6px rgba(0,0,0,0.25); */
   transition: transform .2s, box-shadow .2s;
   cursor: pointer;
 }
@@ -282,15 +399,15 @@ a {
   font-weight: 300;
   line-height: 1.2;
   overflow-wrap: anywhere;
-  color: var(--color-bg-100);
+  color: var(--color-muted-purple-two);
   font-family: var(--font-ui);
-  background-color: var(--color-bg-500);
+  background-color: var(--color-bg-400);
   width: 100%;
   padding: 4px 0px;
   box-sizing: border-box;
   text-align: center;
-  border-radius: 6px;
-  border: 1px solid var(--color-bg-200);
+  border-radius: 12px;
+  border: 1px solid var(--color-muted-purple);
   margin-top: 10px;
 }
 
@@ -298,5 +415,170 @@ a {
   width: 150px;
   height: auto;
   border-radius: 4px;
+  margin-bottom: 10px;
 }
 
+/*COUNTRY DETAILS*/
+
+.country-div {
+  background-color: var(--color-bg-400);
+  padding: 20px;
+  border: 1px solid var(--text-magenta);
+  border-radius: 20px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  gap: 12px;
+}
+
+.country-div .btn{
+  margin-top: 10px;
+  align-self: center;
+}
+.country-div a {
+  color: var(--text-darker-magenta);
+  font-size: 0.7rem;
+  text-decoration: underline;
+}
+
+/*QUIZ APP*/
+
+.quiz-app {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.quiz-form {
+  background-color: var(--color-bg-400);
+  border-radius: 20px;
+  padding: 20px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.quiz-form button {
+  margin: 10px;
+}
+
+.submit-btn {
+  background-color: var(--text-red);
+  color: var(--color-bg-500);
+  font-weight: bold;
+  border: none;
+}
+
+.quiz-app p, h3{
+  font-family: var(--font-mono, "Fira Code", monospace);
+  font-size: 0.85rem;
+  color: var(--text-lightblue);
+}
+
+.quiz-app label {
+  align-self: flex-start;
+  font-family: var(--font-mono, "Fira Code", monospace);
+  font-size: 0.85rem;
+  color: var(--text-periwinkle);
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.quiz-app input {
+  background-color: var(--color-bg-500);
+  border: 1px solid var(--text-darker-periwinkle);
+  border-radius: 10px;
+  height: 20px;
+  color: var(--text-comment);
+}
+
+.quiz-app h2 {
+  margin-bottom: 10px;
+}
+.hr-quiz {
+  margin: 0;
+}
+
+.quiz-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+}
+.quiz-section h3 {
+  font-family: var(--font-mono, "Fira Code", monospace);
+  font-size: 1rem;
+  color: var(--text-periwinkle);
+}
+.quiz-section p {
+  color: var(--text-comment);
+}
+.quiz-section input {
+  background-color: var(--color-bg-500);
+  border: 1px solid var(--text-darker-periwinkle);
+  border-radius: 15px;
+  height: 25px;
+  color: var(--text-comment);
+  padding: 5px;
+}
+.submit-question-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.done-quiz {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+/*LEADERBOARD / SCORE */
+
+.leaderboard {
+  background-color: var(--color-bg-400);
+  border-radius: 20px;
+  padding-bottom: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.leaderboard h2 {
+  margin-bottom: 20px;
+}
+
+.leaderboard ol {
+  padding-left: 0;
+  margin-left: 0;
+  list-style-position: inside;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.leaderboard-region {
+  padding: 20px;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.leaderboard-region h3 {
+  align-self: center;
+}

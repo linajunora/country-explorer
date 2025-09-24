@@ -10,7 +10,8 @@ export default function Layout() {
     return (
         <div className="app-shell">
             <header className="app-header">
-                <h1 className="app-title">Country Explorer</h1>
+                <h1 className={`app-nav ${isHome ? 'app-title' : 'app-title app-title-other'}`}>Country Explorer</h1>
+                <p className="slogan-p">- Do you know your flags? -</p>
 
             {isHome && (
                 <img
@@ -33,16 +34,16 @@ export default function Layout() {
                     </code>
                 </section>
             )}
-                <hr className="hr-fade" />
+                <hr className={`${isHome ? 'hr-fade' : 'hr-normal'}`} />
 
                 <nav className={`app-nav ${isHome ? 'nav-home' : 'nav-inner'}`}>
-                    {location.pathname !== "/" && <Button className="button-nav" to="/" end>Home</Button>}
-                    {location.pathname !== "/countries" && (<Button className="button-nav" to="/countries">Study</Button>)}
-                    {location.pathname !== "/collection" && (<Button className="button-nav" to="/collection">Collection</Button>)}
-                    {location.pathname !== "/quiz" && (<Button className="button-nav button-quiz" to="/quiz">Quiz</Button>)}
-                    {location.pathname !== "/leaderboard" && (<Button className="button-nav" to="/leaderboard">Leaderboard</Button>)}
+                    {location.pathname !== "/" && <Button className={`${isHome ? 'button-nav' : 'button-nav-other'}`} to="/" end>Home</Button>}
+                    {location.pathname !== "/countries" && (<Button className={`${isHome ? 'button-nav' : 'button-nav-other'}`} to="/countries">Study</Button>)}
+                    {location.pathname !== "/collection" && (<Button className={`${isHome ? 'button-nav' : 'button-nav-other'}`} to="/collection">Collection</Button>)}
+                    {location.pathname !== "/quiz" && (<Button className={`${isHome ? 'button-nav button-quiz' : 'button-nav-other button-quiz'}`} to="/quiz">Quiz</Button>)}
+                    {location.pathname !== "/leaderboard" && (<Button className={`${isHome ? 'button-nav' : 'button-nav-other'}`} to="/leaderboard">Score</Button>)}
                 </nav>
-                <hr className="hr-fade" />
+                <hr className={`${isHome ? 'hr-fade' : 'hr-normal'}`} />
             </header>
 
             <main className="app-main">

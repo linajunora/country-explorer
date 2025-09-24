@@ -10,7 +10,7 @@ export default function Collection() {
   console.log(currentCollection);
 
   const countriesArray = Object.values(currentCollection);
-  console.log(countriesArray);
+  // console.log(countriesArray);
 
  
 

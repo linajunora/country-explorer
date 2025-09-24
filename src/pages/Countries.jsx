@@ -15,9 +15,9 @@ export default function Countries() {
     dispatch({ type: 'SET_REGION', payload: region });
   }
     return (
-      <div>
+      <div className="other-shell">
         <h2>Study Countries</h2>
-        <div>
+        <div className="regions-btn-div">
           {/*Maps r(region) ex: 'Africa' -> it calls handleSelected('Africa')
           -> handleSelected updates the global state of SET_REGION
           -> the dispatch goes to appContext reducer, which updates state.selectedRegion = 'Africa'*/}
@@ -26,7 +26,7 @@ export default function Countries() {
             key={r}
             className="btn"
             onClick={() => handleSelected(r)}
-            style={{ opacity: selectedRegion === r ? 1 : 0.7 }}
+            style={{ opacity: selectedRegion === r ? 1 : 0.4 }}
             >
               {r}
             </button>
@@ -35,7 +35,7 @@ export default function Countries() {
 
         {!selectedRegion && <p>Select a region to load countries</p>}
         {selectedRegion && loading && <p>Loading...</p>}
-        {selectedRegion && error && <p style={{ color: 'red'}}>Error: {error}</p>}
+        {selectedRegion && error && <p style={{ color: 'red' }}>Error: {error}</p>}
         {selectedRegion && list && (
           <div className="countries-grid">
             {list
@@ -51,7 +51,6 @@ export default function Countries() {
             ))} 
           </div>
         )}
-        {/*Later: render your flagGrid here using `list`*/}
       </div>
     );
   }
