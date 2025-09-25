@@ -29,7 +29,6 @@
   min-height: 100dvh;             
   display: flex;                 
   flex-direction: column;
-
 }
 
 body {
@@ -121,7 +120,7 @@ li {
 
 /*funny code comment*/
 .code-block {
-  width: 100%;
+  width: 80%;
   background: var(--color-bg-400);
   border: 1px solid var(--text-yellow);
   border-radius: 6px;
